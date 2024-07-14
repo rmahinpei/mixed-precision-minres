@@ -12,5 +12,6 @@ preconditioned by a block diagonal preconditioner of the form
 $$\begin{bmatrix}M_1 & 0 \\\ 0 & M_2 \end{bmatrix}$$
 
 The [``minres_mixed_chol``](https://github.com/rmahinpei/mixed-precision-minres/tree/main/minres_mixed_chol) directory provides the CUDA C source code that expects the **Cholesky factors** of the preconditioners $M_1$ and $M_2$ as input. The [``minres_matlab``](https://github.com/rmahinpei/mixed-precision-minres/tree/main/minres_matlab) directory provides the MATLAB source code that accepts both the Cholesky and LU factors of those preconditioners as input.
+
 -------
 *This thesis was submitted in partial fulfillment of the requirements for the degree of Bachelor of Science (Honours) in Computer Science at the University of British Columbia (UBC). The project was supervised by [Dr. Chen Greif](https://www.cs.ubc.ca/~greif/), whose steadfast support and insights were instrumental in its advancement.*  
