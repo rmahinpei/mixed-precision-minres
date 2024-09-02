@@ -106,7 +106,7 @@ function [x, relres_approx, relres_true, itn, dot_prods] = ...
       beta   = sqrt(beta);
       
       new_v = (1/beta)*y; % !!!
-      dot_prods(itn) = abs(new_v'*old_v); % !!!
+      dot_prods(itn) = dotprod(L1, L2, old_v, new_v); % !!!
 
       % Apply previous rotation Qk-1 to get
       %   [deltak epslnk+1] = [cs  sn][dbark    0   ]
@@ -185,4 +185,20 @@ function [w, r, s] = opSaddle(A, B, x)
 end
 %-----------------------------------------------------------------------
 % End private function opSaddle
+%-----------------------------------------------------------------------
+
+function [prod] = dotprod(R1, R2, old, new)
+% returns dot prod between two consectuive Lanczos vectors
+    n = size(R1,1);
+    v00 = old(1:n); v01 = old(n+1:end);
+    v_old = [R1'*v00 ; R2'*v01];
+
+    v10 = new(1:n); v11 = new(n+1:end);
+    v_new = [R1'*v10 ; R2'*v11];
+
+    prod = abs(v_new'*v_old);
+%     prod = abs(old'*new);
+end
+%-----------------------------------------------------------------------
+% End private function dotprod
 %-----------------------------------------------------------------------
